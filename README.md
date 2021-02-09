@@ -1,2 +1,2 @@
 # node-app
-A simple dockerized node js application
+A small dockerized node js application
