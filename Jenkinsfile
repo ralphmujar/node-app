@@ -4,15 +4,18 @@ pipeline {
 
     stage("build") {
       steps {
-          sh('docker build -t ralphmujar/nodeapp .')
+          script {
+            def dockerImg = docker.build('ralphmujar/nodeapp')
+          }
       }
     }
 
     stage("push") {
       steps {
         script {
-            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')
-            sh('docker push ralphmujar/nodeapp')
+            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+              dockerImg.push() 
+            }
         }
       }
     }
