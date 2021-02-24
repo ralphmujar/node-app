@@ -5,7 +5,7 @@ pipeline {
     stage("build") {
       steps {
           script {
-            def dockerImg = docker.build('ralphmujar/nodeapp')
+            dockerImg = docker.build('ralphmujar/nodeapp')
           }
       }
     }
