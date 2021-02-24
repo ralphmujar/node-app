@@ -1,11 +1,23 @@
 pipeline {
-    agent { dockerfile true }
+  agent any
+  stages {
 
-    stages {
-        stage('build container') {
-            steps {
-                sh 'node --version'
-            }
+    stage("build") {
+      steps {
+        script {
+            dockerImage = docker.build("ralphmujar/nodeapp")
         }
+      }
     }
+
+    stage("push") {
+      steps {
+        script {
+            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')
+            dockerImage.push()
+        }
+      }
+    }
+
+  }
 }
