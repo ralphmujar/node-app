@@ -20,5 +20,11 @@ pipeline {
       }
     }
 
+    stage("deployment") {
+      steps {
+        build job: 'deploy', propagate: true 
+      }
+    }
+
   }
 }
