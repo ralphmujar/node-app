@@ -5,7 +5,7 @@ pipeline {
     stage("build") {
       steps {
           script {
-            dockerImg = docker.build('ralphmujar/nodeapp')
+            dockerImg = docker.build('ralphmujar/nodeapp:${env.BUILD_NUMBER}')
           }
       }
     }
