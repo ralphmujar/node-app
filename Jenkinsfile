@@ -22,7 +22,7 @@ pipeline {
 
     stage("deployment") {
       steps {
-        build job: 'deploy', propagate: true, parameters: [string(name: 'image_tag', value: String.valueOf(env.BUILD_NUMBER) )]
+        build job: 'deploy', propagate: true, parameters: [string(name: 'image_tag', value: "${env.BUILD_NUMBER}" )]
       }
     }
 
