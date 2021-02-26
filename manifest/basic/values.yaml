@@ -1,0 +1,19 @@
+namespace: nodeapp
+
+deployment:
+  name: nodeapp-deployment
+  image:
+    name: nodeapp
+    repo: ralphmujar/nodeapp
+    tag: 30
+  port: 3000
+  
+
+service:
+  name: nodeapp-service
+  port: 3000
+
+
+ingress:
+  name: nodeapp-ingress
+  host: app.ph
